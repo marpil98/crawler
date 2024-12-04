@@ -2,7 +2,8 @@ import requests
 from bs4 import BeautifulSoup as bs
 from urllib.parse import urljoin
 
-def crawler(url, max_depth = 5,visited=None,offerts = None):
+def crawler(url,pattern,klucz, max_depth = 5,visited=None,offerts = None):
+    
     try:
         if visited is None:
             visited = set()
@@ -18,7 +19,7 @@ def crawler(url, max_depth = 5,visited=None,offerts = None):
             for a_tag in soup.find_all('a', href = True):
                 next_url = urljoin(url, a_tag['href'])
                 if next_url not in visited:
-                    if (next_url.startswith('http') and a_tag['href'].startswith('/d/oferta')):
+                    if (next_url.startswith('http') and a_tag['href'].startswith(pattern) and (klucz in a_tag['href'])):
                         offerts.add(next_url)
                         #print(f"URL: {next_url}, Title: {soup.title.string}")
                     elif next_url.startswith('http'):
