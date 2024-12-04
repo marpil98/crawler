@@ -1,0 +1,17 @@
+# Środowiska wirtualne
+crawler_OLX/
+venv/
+.env/
+
+# Pliki cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Pliki konfiguracyjne IDE
+.vscode/
+
+# Pliki tekstowe/wyniki działania kodu
+.csv/
+.pickle/
+
